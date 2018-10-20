@@ -1,14 +1,14 @@
 const rp = require('request-promise');
 const cheerio = require('cheerio');
-const spar4stuks = {
-    uri: `https://www.spar.nl/spar-rozijnenbollen-reuze-2329654/`,
+const sparfrikandelbroodje = {
+    uri: `https://www.spar.nl/frikandelbroodje-xl-5234492/`,
     transform: function (body) {
         return cheerio.load(body);
     }
 };
 
 
-rp(spar4stuks)
+rp(sparfrikandelbroodje)
     .then(($) => {
         console.log($('.c-price').text());
         console.log($('.c-offer__title').text());
@@ -19,14 +19,3 @@ rp(spar4stuks)
     .catch((err) => {
         console.log(err);
     });
-
-// rp(coopReuze)
-//     .then(($) => {
-//         console.log($('.altHead.head1').text());
-//         console.log($('.price').text());
-//         console.log($('.productImg img').attr('data-srcset'));
-//
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     });

@@ -1,37 +1,19 @@
 const rp = require('request-promise');
 const cheerio = require('cheerio');
-const jumbo4stuks    = {
-    uri: `https://www.jumbo.com/jumbo-reuze-rozijnenbollen-4-stuks/63582STK/`,
-    transform: function (body) {
-        return cheerio.load(body);
-    }
-};
-const jumbo9stuks = {
-    uri: `https://www.jumbo.com/jumbo-roomboter-mini-rozijnenbollen-9-stuks/63891STK/`,
+const jumbofrikandelbroodje    = {
+    uri: `https://www.jumbo.com/jumbo-frikandelbroodjes-met-currysaus-300g/188540PAK/`,
     transform: function (body) {
         return cheerio.load(body);
     }
 };
 
-rp(jumbo4stuks)
+rp(jumbofrikandelbroodje)
     .then(($) => {
         console.log($('.jum-price-format').text());
         console.log($('[data-dynamic-block-name=Title]').text());
-        // console.log($('.jum-item-price').text());
+        console.log($('.jum-product-image img').attr('data-jum-src'));
 
     })
     .catch((err) => {
         console.log(err);
     });
-
-rp(jumbo9stuks)
-    .then(($) => {
-        console.log($('.jum-price-format').text());
-        console.log($('[data-dynamic-block-name=Title]').text());
-        // console.log($('.jum-item-price').text());
-
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-
