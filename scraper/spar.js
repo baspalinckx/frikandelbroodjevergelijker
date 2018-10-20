@@ -13,7 +13,6 @@ rp(sparfrikandelbroodje)
         console.log($('.c-price').text());
         console.log($('.c-offer__title').text());
         console.log($('.c-gallery__main-item img').attr('src'));
-        // console.log($('.productImg img').attr('data-srcset'));
 
     })
     .catch((err) => {

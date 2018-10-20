@@ -6,12 +6,6 @@ const ah6stuks = {
         return cheerio.load(body);
         }
 };
-const coopReuze = {
-    uri: `https://www.coop.nl/coop-reuze-krentenbollen-4-stuks/product/8715196088078`,
-    transform: function (body) {
-        return cheerio.load(body);
-    }
-};
 
 rp(ah6stuks)
     .then(($) => {
@@ -19,18 +13,10 @@ rp(ah6stuks)
         console.log($('.product-description').text());
         console.log($('.bold.discount-block__label').text());
         console.log($('.section__content').text());
+        console.log($("title").text());
+        console.log($("product__summary").html());
+
         // console.log($);
-
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-
-rp(coopReuze)
-    .then(($) => {
-        console.log($('.price').text());
-        console.log($('.logoList').text());
-        console.log($('.allergyInfo').text());
 
     })
     .catch((err) => {

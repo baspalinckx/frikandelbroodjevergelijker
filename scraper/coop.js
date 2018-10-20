@@ -12,7 +12,7 @@ const coopFrikandelboordje = {
           console.log($('.altHead.head1').text());
           console.log($('.price').text());
           console.log($('.productImg img').attr('data-srcset'));
-
+          
       })
       .catch((err) => {
           console.log(err);

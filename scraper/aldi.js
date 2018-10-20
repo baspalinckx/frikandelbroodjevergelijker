@@ -11,7 +11,7 @@ const aldiFrikandelbroodje = {
       .then(($) => {
           console.log($('.mod-article-intro__header-headline').text());
           console.log($('.price__main').text());
-          console.log($('.mod-gallery-article__media mod-gallery-article__media--img has-lightbox img').attr('href'));
+          console.log("https://www.aldi.nl"+$('.mod-gallery-article__media.mod-gallery-article__media--img.has-lightbox').attr('href'));
 
       })
       .catch((err) => {
