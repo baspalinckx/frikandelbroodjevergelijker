@@ -1,24 +1,14 @@
-const rp = require('request-promise');
-const cheerio = require('cheerio');
-const ah6stuks = {
-    uri: `https://www.ah.nl/producten/product/wi30248/ah-krentenbollen`,
-    transform: function (body) {
-        return cheerio.load(body);
-        }
-};
+const fetch = require('node-fetch')
+const JSDOM = require('jsdom').JSDOM
 
-rp(ah6stuks)
-    .then(($) => {
-        console.log($('.multicol').text());
-        console.log($('.product-description').text());
-        console.log($('.bold.discount-block__label').text());
-        console.log($('.section__content').text());
-        console.log($("title").text());
-        console.log($("product__summary").html());
+let selector = 'ul > li > a'
+let url = 'https://www.ah.nl/producten/product/wi230720/ah-frikandelbroodje'
 
-        // console.log($);
-
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+fetch(url)
+  .then(resp => resp.text())
+  .then(text => {
+    let dom = new JSDOM(text,{ runScripts: "dangerously", resources: "usable" });
+    let { document } = dom.window;
+    let summary = document.getElementsByClassName('product__summary')[0].innerHTML;
+    console.log(summary);
+   })
