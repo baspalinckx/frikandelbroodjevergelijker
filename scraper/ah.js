@@ -1,14 +1,34 @@
-const fetch = require('node-fetch')
-const JSDOM = require('jsdom').JSDOM
 
-let selector = 'ul > li > a'
-let url = 'https://www.ah.nl/producten/product/wi230720/ah-frikandelbroodje'
+const puppeteer = require('puppeteer');
 
-fetch(url)
-  .then(resp => resp.text())
-  .then(text => {
-    let dom = new JSDOM(text,{ runScripts: "dangerously", resources: "usable" });
-    let { document } = dom.window;
-    let summary = document.getElementsByClassName('product__summary')[0].innerHTML;
-    console.log(summary);
-   })
+let scrape = async () => {
+    const browser = await puppeteer.launch({headless: true});
+    const page = await browser.newPage();
+
+    await page.goto('https://www.ah.nl/producten/product/wi230720/ah-frikandelbroodje',
+  {waitUntil: 'networkidle2'});
+    await page.waitForSelector('div.product-price')
+
+    const result = await page.evaluate(() => {
+        let price = document.querySelector('div.product-price').innerText;
+        let summary = document.querySelector('p.product__summary').innerText;
+        let title = document.querySelector('h1.product-description__title.heading--6.-multiline').innerText;
+        let img = document.querySelector('img.image.image--lazy-load.product-image.js-product-image-animated.image-container__image.js-imageloaded');
+        let src = img.getAttribute('src');
+
+        return {
+            summary,
+            price,
+            title,
+            src
+        }
+
+    });
+
+    browser.close();
+    return result;
+};
+
+scrape().then((value) => {
+    console.log(value);
+});
