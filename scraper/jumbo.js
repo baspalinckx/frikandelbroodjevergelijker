@@ -9,9 +9,15 @@ const jumbofrikandelbroodje    = {
 
 rp(jumbofrikandelbroodje)
     .then(($) => {
-        console.log($('.jum-price-format').text());
-        console.log($('[data-dynamic-block-name=Title]').text());
-        console.log($('.jum-product-image img').attr('data-jum-src'));
+        let price = ($('.jum-price-format').text());
+        let title = ($('[data-dynamic-block-name=Title]').text());
+        let img = ($('.jum-product-image img').attr('data-jum-src'));
+
+        return{
+          price,
+          title,
+          img
+        }
 
     })
     .catch((err) => {

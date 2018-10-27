@@ -9,11 +9,20 @@ const plusfrikandelbroodje = {
 
 rp(plusfrikandelbroodje)
     .then(($) => {
-        console.log($('.pdpTitleRedesign').text());
-        console.log($('.product-tile__price').text());
-        console.log("https://www.plus.nl"+$('.lazy').attr('data-src'));
+
+        let titel = ($('.pdpTitleRedesign').text());
+        let price = ($('.product-tile__price').text());
+        let omschrijving = ($('.prod-attrib-item.wettelijke_naam').text());
+        let img = ("https://www.plus.nl"+$('.lazy').attr('data-src'));
         // console.log($('.price').text());
         // console.log($('.productImg img').attr('data-srcset'));
+
+        return {
+          titel,
+          price,
+          omschrijving,
+          img
+        }
 
     })
     .catch((err) => {

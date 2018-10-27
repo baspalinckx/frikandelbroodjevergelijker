@@ -9,10 +9,16 @@ const coopFrikandelboordje = {
 
   rp(coopFrikandelboordje)
       .then(($) => {
-          console.log($('.altHead.head1').text());
-          console.log($('.price').text());
-          console.log($('.productImg img').attr('data-srcset'));
-          
+          let titel = ($('.altHead.head1').text());
+          let price = ($('.price').text());
+          let img = ($('.productImg img').attr('data-srcset'));
+
+          return{
+            titel,
+            price,
+            img
+          }
+
       })
       .catch((err) => {
           console.log(err);

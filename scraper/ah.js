@@ -12,7 +12,8 @@ let scrape = async () => {
     const result = await page.evaluate(() => {
         let price = document.querySelector('div.product-price').innerText;
         let summary = document.querySelector('p.product__summary').innerText;
-        let title = document.querySelector('h1.product-description__title.heading--6.-multiline').innerText;
+        // let title = "document.querySelector('h1.product-description__title.heading--6.-multiline').innerText;"
+        let title = "AH Frikandelbroodje"
         let img = document.querySelector('img.image.image--lazy-load.product-image.js-product-image-animated.image-container__image.js-imageloaded');
         let src = img.getAttribute('src');
 

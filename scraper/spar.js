@@ -10,9 +10,15 @@ const sparfrikandelbroodje = {
 
 rp(sparfrikandelbroodje)
     .then(($) => {
-        console.log($('.c-price').text());
-        console.log($('.c-offer__title').text());
-        console.log($('.c-gallery__main-item img').attr('src'));
+        let price = ($('.c-price').text());
+        let title = ($('.c-offer__title').text());
+        let img = ($('.c-gallery__main-item img').attr('src'));
+
+        return {
+          price,
+          title,
+          img
+        }
 
     })
     .catch((err) => {
