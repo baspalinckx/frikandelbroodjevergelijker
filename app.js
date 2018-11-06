@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 // var mongodb = require('./config/mongo.db');
-var broodjes_v1 = require('./api/broodjes.routes.v1');
+var broodje_v1 = require('./api/broodje.routes.v1');
 var config = require('./config/env/env');
 // var ingredientroutes_v1 = require('./api/ingredient.route.v1');
 
@@ -33,7 +33,7 @@ app.use(logger('dev'));
 //     next();
 // });
 
-app.use('/api/v1', broodjes_v1);
+app.use('/api/v1', broodje_v1);
 
 app.use(function (err, req, res, next) {
     // console.dir(err);
@@ -55,5 +55,5 @@ app.use('*', function (req, res) {
 
 app.listen(config.env.webPort, function () {
     console.log('De server luistert op port ' + app.get('port'));
-    console.log('Zie bijvoorbeeld http://localhost:3000/api/v1/broodjes');
+    console.log('Zie bijvoorbeeld http://localhost:3000/api/v1/broodje');
 });

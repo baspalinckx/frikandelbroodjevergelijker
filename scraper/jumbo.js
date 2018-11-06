@@ -7,19 +7,28 @@ const jumbofrikandelbroodje    = {
     }
 };
 
-rp(jumbofrikandelbroodje)
-    .then(($) => {
-        let price = ($('.jum-price-format').text());
-        let title = ($('[data-dynamic-block-name=Title]').text());
-        let img = ($('.jum-product-image img').attr('data-jum-src'));
 
-        return{
-          price,
-          title,
-          img
-        }
+function scrapeJumbo() {
+  rp(jumbofrikandelbroodje)
+      .then(($) => {
+          let price = ($('.jum-price-format').text());
+          let title = ($('[data-dynamic-block-name=Title]').text());
+          let img = ($('.jum-product-image img').attr('data-jum-src'));
 
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+          return{
+            price,
+            title,
+            img
+          }
+
+
+
+      })
+      .catch((err) => {
+          console.log(err);
+      });
+}
+
+module.exports = {
+  scrapeJumbo
+}
