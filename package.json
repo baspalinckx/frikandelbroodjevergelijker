@@ -7,20 +7,20 @@
   },
   "dependencies": {
     "albert-heijn": "^1.1.2",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "^4.16.4",
     "http-errors": "~1.6.2",
-    "jade": "~1.11.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.1",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.5",
-    "puppeteer": "^1.9.0",
+    "pug": "^2.0.4",
+    "puppeteer": "^1.20.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
-    "x-ray": "^2.3.3"
+    "x-ray": "^2.3.4"
   },
   "devDependencies": {
     "jsdom": "^12.2.0"
